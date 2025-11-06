@@ -1,0 +1,56 @@
+
+.card {
+  width: 30%;
+  margin: 1.5%;
+  height: fit-content;
+  text-align: left;
+  border: none;
+  background-color: #FFFFFF99;
+}
+.number {
+  font-size: 100px;
+  font-weight: normal;
+}
+.container {
+  width: 90%;
+}
+
+a {
+  text-decoration: #346473 underline;
+  text-underline-offset: 5px;
+  font-display: bold;
+}
+.aqua {
+  color: #346473;
+}
+
+.offblack {
+  color: #111111;
+}
+
+.offwhite {
+  color: #FFFFFF99;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    width: 45%;
+  }
+  .container {
+    width: 98%;
+  }
+}
+  
+  @media (max-width: 600px) {
+    .card {
+      width: 100%;
+      margin: 2% auto;
+      font-size: 1rem;
+    }
+    .number {
+      font-size: 48px;
+    }
+    .container {
+      width: 100%;
+    }
+  }

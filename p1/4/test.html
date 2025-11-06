@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Services - Vue.js Test</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .app {
+            min-height: 100vh;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: #333;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: #333;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .services-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 3px solid #007bff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: #007bff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .service-card p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #2c3e50;
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .contact-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: white;
+            color: #333;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #007bff;
+        }
+
+        .submit-btn {
+            background: #007bff;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            float: right;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+
+        .loading,
+        .error {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .services-section h1 {
+                font-size: 2rem;
+            }
+
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .intro {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="app">
+            <!-- Navigation -->
+            <nav class="navbar">
+                <div class="nav-container">
+                    <button class="hamburger" @click="toggleMenu" :class="{ 'open': isMenuOpen }">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <!-- Desktop Navigation -->
+                    <div class="nav-links desktop-nav">
+                        <a href="#services">Services</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu Overlay -->
+            <div class="mobile-menu" :class="{ 'open': isMenuOpen }">
+                <button class="close-btn" @click="toggleMenu">×</button>
+                <a href="#services" @click="toggleMenu">Services</a>
+                <a href="#contact" @click="toggleMenu">Contact</a>
+            </div>
+
+            <!-- Main Content -->
+            <main>
+                <!-- Services Section -->
+                <section id="services" class="services-section">
+                    <div class="container">
+                        <div v-if="loading" class="loading">Loading services...</div>
+                        <div v-else-if="error" class="error">{{ error }}</div>
+                        <div v-else-if="serviceData">
+                            <h1>{{ serviceData.title }}</h1>
+                            <p class="intro">{{ serviceData.intro }}</p>
+
+                            <div class="services-grid">
+                                <div v-for="service in serviceData.services" :key="service.id" class="service-card">
+                                    <div class="service-icon">
+                                        {{ service.title.charAt(0) }}
+                                    </div>
+                                    <h3>{{ service.title }}</h3>
+                                    <p>{{ service.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="contact-section">
+                    <div class="container">
+                        <h2>Contact</h2>
+                        <form @submit.prevent="submitForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" v-model="contactForm.name" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" v-model="contactForm.email" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" v-model="contactForm.subject" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" v-model="contactForm.message" rows="5" required></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn">Send message</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                // Reactive data
+                const isMenuOpen = ref(false);
+                const serviceData = ref(null);
+                const loading = ref(true);
+                const error = ref(null);
+
+                // Contact form data
+                const contactForm = ref({
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+
+                // Methods
+                const toggleMenu = () => {
+                    isMenuOpen.value = !isMenuOpen.value;
+                };
+
+                const fetchServices = async () => {
+                    try {
+                        loading.value = true;
+                        const response = await fetch('http://jemx.nl/FTED/ExOp/');
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch services');
+                        }
+                        const data = await response.json();
+                        serviceData.value = data.service;
+                    } catch (err) {
+                        error.value = err.message;
+                        console.error('Error fetching services:', err);
+                    } finally {
+                        loading.value = false;
+                    }
+                };
+
+                const submitForm = () => {
+                    // Handle form submission
+                    console.log('Form submitted:', contactForm.value);
+                    alert('Form submitted successfully!');
+                    // Reset form
+                    contactForm.value = {
+                        name: '',
+                        email: '',
+                        subject: '',
+                        message: ''
+                    };
+                };
+
+                // Lifecycle
+                onMounted(() => {
+                    fetchServices();
+                });
+
+                return {
+                    isMenuOpen,
+                    serviceData,
+                    loading,
+                    error,
+                    contactForm,
+                    toggleMenu,
+                    fetchServices,
+                    submitForm
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+
+</html>

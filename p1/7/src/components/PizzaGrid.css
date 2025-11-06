@@ -1,0 +1,23 @@
+.pizza-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+}
+
+@media (max-width: 968px) {
+    .pizza-grid {
+        gap: 30px;
+        padding: 0 30px 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pizza-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0 20px 40px;
+    }
+}

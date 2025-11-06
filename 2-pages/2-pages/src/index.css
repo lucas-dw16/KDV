@@ -1,0 +1,22 @@
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.logo {
+  font-family: 'Oswald';
+  color: lightgray;
+  font-weight: 300;;
+  text-align: left; 
+  box-shadow: 0px 0px 2px black;
+  box-sizing: border-box; /* zodat padding de breedte niet oprekt */
+  line-height: 2; 
+  padding-left: 20px;
+  margin-top: 0px;
+}
+
+.logo-img {
+  width: 100%;       /* of vaste px */
+  height: 500px;
+  object-fit: cover; 
+}

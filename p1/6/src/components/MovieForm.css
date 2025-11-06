@@ -1,0 +1,113 @@
+.movie-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.movie-form-container h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+#movie-form {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 13px;
+    margin: 4px 0 8px 0;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.movieslist {
+    margin-top: 20px;
+    color: #4a90e2;
+}
+
+.moviesli {
+    margin-top: 10px;
+}
+
+
+.form-group input.error {
+    border-color: #dc3545;
+}
+
+.form-group input.error:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+.submit-btn:hover {
+    background-color: #357abd;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .movie-form-container {
+        padding: 20px 16px;
+    }
+
+    #movie-form {
+        padding: 24px;
+    }
+
+    .movie-form-container h1 {
+        font-size: 24px;
+    }
+}

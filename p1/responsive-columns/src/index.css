@@ -1,0 +1,26 @@
+html, body {
+  background-image: url(assets/FEKD_opdr1.jpeg);
+  background-size: cover;
+  background-position: center;
+  height: fit-content;
+  margin: 0;
+}
+
+.Titles {
+  font-family: "Merriweather", monospace;
+  font-weight: 500;
+  font-style: bold;
+}
+
+.Text {
+  font-family: "Open Sans", monospace;
+  font-weight: 100;
+  font-style: normal;
+  color: black;
+}
+
+.more-text {
+  color: black;
+}
+
+

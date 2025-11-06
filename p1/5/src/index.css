@@ -1,0 +1,63 @@
+/* IKEA Color Palette */
+:root {
+  --ikea-pink: #E00751;
+  --ikea-blue: #0058A3;
+  --ikea-yellow-light: #E4C100;
+  --ikea-yellow-bright: #FFDB00;
+  --ikea-red: #CC0008;
+  --ikea-black: #111;
+  --ikea-gray-dark: #484848;
+  --ikea-gray: #929292;
+  --ikea-gray-light: #dfdfdf;
+  --ikea-bg: #fafafa;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--ikea-bg);
+  color: var(--ikea-black);
+  line-height: 1.5;
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--ikea-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

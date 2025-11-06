@@ -1,0 +1,144 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url(assets/background.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; /* achtergrond bedekt altijd het scherm */
+  min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* Responsive grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px;
+  width: 100%; /* volledige breedte */
+  max-width: 900px; /* optioneel voor grote schermen */
+  margin: auto;
+}
+
+/* Card styling */
+.card {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  
+}
+
+.card-number {
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 400;
+  color: #346473;
+  font-size: 2rem;
+}
+
+.card-title {
+  margin: 0 0 10px 0;
+  font-family: "Merriweather Sans", sans-serif;
+  font-weight: 400;
+  color: #111111;
+}
+
+.card-text {
+  font-family: "Open Sans", sans-serif;
+  color: #54545499;
+  line-height: 1.5;
+}
+
+.card-more-1 {
+  font-family: "Open Sans", sans-serif;
+  color: #346473;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-top: auto;
+  display: block;
+} 
+
+.card-more-2 {
+  font-family: "Open Sans", sans-serif;
+  color: #346473;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-top: auto;
+  padding-top: 23px;
+  display: block;
+} 
+.card-more-3 {
+  font-family: "Open Sans", sans-serif;
+  color: #346473;
+  font-weight: bold;
+  cursor: pointer;
+  padding-top: 23px;
+  margin-top: 10px;
+  margin-top: auto;
+  display: block;
+} 
+.card-more-4 {
+  font-family: "Open Sans", sans-serif;
+  color: #346473;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  padding-top: 23px;
+  margin-top: auto;
+  display: block;
+} 
+.card-more-5 {
+  font-family: "Open Sans", sans-serif;
+  color: #346473;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  padding-top: 23px;
+  margin-top: auto;
+  display: block;
+} 
+.card-more-6 {
+  font-family: "Open Sans", sans-serif;
+  color: #346473;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  padding-top: 46px;
+  margin-top: auto;
+  display: block;
+} 
+
+
+/* Tablets: 2 columns */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 500px) {
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .card-number {
+    font-size: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+}
